@@ -1,25 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { TailwindProvider } from "tailwind-rn";
-import utilities from "./tailwind.json";
+import { SafeAreaView, Text, View } from "react-native";
+import CustomersScreen from "./screens/CustomersScreen";
 
 export default function App() {
   return (
-    //@ts-ignore - TailwindProvider is missing a defination
-    <TailwindProvider>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </TailwindProvider>
+    <SafeAreaView>
+      <Text className="text-red-500">
+        Open up App.tsx to start working on your app!
+      </Text>
+      <CustomersScreen />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
