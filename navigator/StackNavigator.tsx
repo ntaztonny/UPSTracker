@@ -9,13 +9,13 @@ export type StakeNavigatorParams = {
   MyModel: { userID: string; name: string };
   Order: { order: any };
 };
+
+const Stack = createNativeStackNavigator();
 const StackNavigator: React.FC = () => {
-  const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator>
       <Stack.Group>
         <Stack.Screen name="Main" component={TabNavigator} />
-        <Stack.Screen name="Home" component={Home} />
       </Stack.Group>
     </Stack.Navigator>
   );
