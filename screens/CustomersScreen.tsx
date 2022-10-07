@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   TextInput,
+  Image,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import {
@@ -16,7 +17,6 @@ import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { TabStackParamList } from "../navigator/TabNavigator";
 import { StakeNavigatorParams } from "../navigator/StackNavigator";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Image } from "@rneui/themed/dist/Image";
 
 //types
 export type CustomerScreenNavigationProp = CompositeNavigationProp<
@@ -38,8 +38,7 @@ const CustomersScreen: React.FC = () => {
     <ScrollView className="bg-[#59C1CC]">
       <Image
         source={{ uri: "https://links.papareact.com/3jc" }}
-        containerStyle={style.Img}
-        PlaceholderContent={<ActivityIndicator />}
+        className="w-full h-64"
       />
       <TextInput
         placeholder="Search by customer"
