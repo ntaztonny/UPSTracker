@@ -19,7 +19,13 @@ type OrderList {
   name: ID
   value: Order
 }
+
 type Query {
+  getOrderById(id: ID): Order
+    @rest(
+      endpoint: "https://upstracker-ceacb-default-rtdb.firebaseio.com/orders/$id.json"
+    )
+
   getOrders: [OrderList]
     @rest(
       endpoint: "https://upstracker-ceacb-default-rtdb.firebaseio.com/orders.json"
