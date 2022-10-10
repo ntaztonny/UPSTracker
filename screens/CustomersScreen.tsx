@@ -44,7 +44,7 @@ const CustomersScreen: React.FC = () => {
         placeholder="Search by customer"
         value={input}
         onChangeText={setInput}
-        className="bg-white pt-5 pb-5 px-10"
+        className="bg-white py-7 px-10"
       />
     </ScrollView>
   );
