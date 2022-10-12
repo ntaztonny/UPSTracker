@@ -17,7 +17,7 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
         marginVertical: 15,
         padding: 0,
         paddingTop: 16,
-        paddingBottom: 16,
+        paddingBottom: 0,
         shadowColor: "black",
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
@@ -53,7 +53,7 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
         {order.trackingItems.items.map((item) => (
           <View className="flex-row justify-between items-center">
             <Text className="text-sm italic text-white">{item.name}</Text>
-            <Text className="text-xl text-white">{item.quantity}</Text>
+            <Text className="text-xl text-white">x{item.quantity}</Text>
           </View>
         ))}
       </View>
@@ -64,7 +64,7 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
-        className="w-full h-20"
+        className="w-full h-50"
       >
         {order.Lat && order.Lng && (
           <Marker

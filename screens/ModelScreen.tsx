@@ -25,7 +25,7 @@ const ModelScreen = () => {
   const {
     params: { name, userId },
   } = useRoute<modelScreenRouteProp>();
-  const { loading, error, orders } = useCustomerOrders(userId);
+  const { orders } = useCustomerOrders(userId);
   const myorder = {
     carrier: "string",
     createdAt: "string",
@@ -51,13 +51,15 @@ const ModelScreen = () => {
           <Text className="text-center italic text-sm">deliveries</Text>
         </View>
       </View>
-      {/* <FlatList
+      <FlatList
         contentContainerStyle={{ paddingBottom: 200 }}
         data={orders}
         keyExtractor={(order) => order.trackingId}
-        renderItem={({ item: order }) => <DeliveryCard order={order} />}
-      /> */}
-      <DeliveryCard order={myorder} />
+        renderItem={({ item: order }) => (
+          <DeliveryCard key={order.trackingId} order={order} />
+        )}
+      />
+      {/* <DeliveryCard order={myorder} /> */}
     </View>
   );
 };

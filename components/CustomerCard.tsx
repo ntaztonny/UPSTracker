@@ -12,7 +12,8 @@ type Props = {
 };
 
 const CustomerCard: React.FC<Props> = ({ email, name, userId }) => {
-  const { loading, error, orders } = useCustomerOrders(userId);
+  // const { loading, error, orders } = useCustomerOrders(userId);
+  const { orders } = useCustomerOrders(userId);
   const navigation = useNavigation<CustomerScreenNavigationProp>();
   return (
     <TouchableOpacity
@@ -32,7 +33,7 @@ const CustomerCard: React.FC<Props> = ({ email, name, userId }) => {
             </View>
             <View className="flex-row items-center justify-end">
               <Text className="color-black">
-                {loading ? "loading..." : `${orders.length}x`}
+                {orders === null ? "loading..." : `${orders.length}x`}
               </Text>
               <Icon
                 style={{ marginBottom: 5, marginLeft: "auto" }}

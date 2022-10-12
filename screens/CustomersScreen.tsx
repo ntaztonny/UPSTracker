@@ -21,6 +21,7 @@ import useOrders from "../hooks/useOrders";
 import { useQuery } from "@apollo/client";
 import { GET_CUSTOMERS } from "../graphql/queries";
 import CustomerCard from "../components/CustomerCard";
+import { customerQueryData } from "../dummydata";
 
 //types
 export type CustomerScreenNavigationProp = CompositeNavigationProp<
@@ -29,45 +30,7 @@ export type CustomerScreenNavigationProp = CompositeNavigationProp<
 >;
 
 //dummy data
-const data = {
-  getCustomers: [
-    {
-      value: {
-        email: "lucas.bill@example.com",
-        name: "Lucas Bill",
-      },
-      name: "-N6rOmxa7vOOTpZZSllL",
-    },
-    {
-      value: {
-        email: "mandy.jones@example.com",
-        name: "Mandy Jones",
-      },
-      name: "-N6rQgCkbLPB1xElUchT",
-    },
-    {
-      value: {
-        email: "salim.ali@example.com",
-        name: "Salim Ali",
-      },
-      name: "-N6rSJ4xI3_Cq7u58Wh_",
-    },
-    {
-      value: {
-        email: "jane.xiu@example.com",
-        name: "Jane Xiu",
-      },
-      name: "-N6rSZB4AoMAwrDnm2jF",
-    },
-    {
-      value: {
-        email: "john.doe@example.com",
-        name: "John Doe",
-      },
-      name: "-N6rTRzW_JrkHQMdt5QA",
-    },
-  ],
-};
+
 //component
 const CustomersScreen: React.FC = () => {
   const navigation = useNavigation<CustomerScreenNavigationProp>();
@@ -100,7 +63,7 @@ const CustomersScreen: React.FC = () => {
       )}  */}
       {/*Change code portion above when you dynamically get data */}
 
-      {data?.getCustomers
+      {customerQueryData?.getCustomers
         ?.filter((customer) => customer.value.name.includes(input))
         .map(({ name: ID, value: { email, name } }: CustomerResponse) => (
           <CustomerCard key={ID} email={email} name={name} userId={ID} />
