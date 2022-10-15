@@ -54,10 +54,8 @@ const ModelScreen = () => {
       <FlatList
         contentContainerStyle={{ paddingBottom: 200 }}
         data={orders}
-        keyExtractor={(order) => order.trackingId}
-        renderItem={({ item: order }) => (
-          <DeliveryCard key={order.trackingId} order={order} />
-        )}
+        keyExtractor={(order) => order?.trackingId}
+        renderItem={({ item: order }) => <DeliveryCard order={order} />}
       />
       {/* <DeliveryCard order={myorder} /> */}
     </View>

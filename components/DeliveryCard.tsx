@@ -51,7 +51,10 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
       <Divider color="white" />
       <View className="p-5">
         {order.trackingItems.items.map((item) => (
-          <View className="flex-row justify-between items-center">
+          <View
+            key={item.item_id}
+            className="flex-row justify-between items-center"
+          >
             <Text className="text-sm italic text-white">{item.name}</Text>
             <Text className="text-xl text-white">x{item.quantity}</Text>
           </View>
@@ -64,7 +67,8 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
-        className="w-full h-50"
+        //style={{ width: 400, height: 300 }}
+        className="w-full h-48"
       >
         {order.Lat && order.Lng && (
           <Marker
