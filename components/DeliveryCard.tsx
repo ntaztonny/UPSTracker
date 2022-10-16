@@ -6,15 +6,17 @@ import MapView, { Marker } from "react-native-maps";
 import { fromPromise } from "@apollo/client";
 type Props = {
   order: Order;
+  fullWidth?: Boolean;
 };
 
-const DeliveryCard: React.FC<Props> = ({ order }) => {
+const DeliveryCard: React.FC<Props> = ({ order, fullWidth }) => {
   return (
     <Card
       containerStyle={{
-        backgroundColor: "#59C1CC",
-        borderRadius: 15,
-        marginVertical: 15,
+        backgroundColor: fullWidth ? "#EB6A7C" : "#59C1CC",
+        borderRadius: fullWidth ? 0 : 15,
+        marginVertical: fullWidth ? 0 : 15,
+        marginHorizontal: fullWidth ? 0 : 15,
         padding: 0,
         paddingTop: 16,
         paddingBottom: 0,
@@ -22,9 +24,11 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 4,
+        height: fullWidth ? "100%" : "auto",
       }}
     >
       <View>
+        {/* <View style={fullWidth && { height: "100%" }}> */}
         <Icon name="box" type="entypo" size={50} color="white" />
         <View>
           <Text className="text-xs text-center uppercase text-white font-bold">
@@ -67,8 +71,8 @@ const DeliveryCard: React.FC<Props> = ({ order }) => {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}
-        //style={{ width: 400, height: 300 }}
-        className="w-full h-48"
+        className="w-full h-64"
+        style={{ flexGrow: 1 }}
       >
         {order.Lat && order.Lng && (
           <Marker
